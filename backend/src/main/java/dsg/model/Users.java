@@ -2,9 +2,16 @@ package dsg.model;
 
 import dsg.model.enums.TipoUser;
 import jakarta.persistence.*;
+import lombok.*;
 
 
 @Entity
+@Table(name = "users")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Users {
 
     @Id
@@ -23,36 +30,4 @@ public class Users {
     @Enumerated(EnumType.STRING)
     private TipoUser type;
 
-    public Users(){
-    }
-
-    public Users(String name, String email, String password, TipoUser type) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.type = type;
-    }
-
-    public Long getId(){
-        return id;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public String getPassword(){
-        return password;
-    }
-    public void changePassword(String newHashedPassword) {
-        this.password = newHashedPassword;
-    }
-
-    public TipoUser whichType(){
-        return type;
-    }
-
-
-
-    // getters e setters
 }
